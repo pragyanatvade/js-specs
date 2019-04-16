@@ -13,7 +13,7 @@
     "dev": "babel-watch src/server.js",
     "debug": "ndb nodemon dist/server.js",
     "start": "pm2 start pm2.json",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
