@@ -266,44 +266,44 @@ describe('gen', () => {
           .take(5);
         expect([...s]).toEqual([10, 10, 10, 10, 10]);
       });
-    });
-    it('Should be able to join on nil', () => {
-      function* g1() {
-        yield* [1, 2, 3, 4, 5];
-      }
-      const s = stream().nil().join(g1());
-      expect([...s]).toEqual([1, 2, 3, 4, 5]);
-    });
-  });
-  describe('getNthOrLast', () => {
-    it('Should return the nth value of the stream', () => {
-      function* g() {
-        yield* [42, 5, 43, 8, 19];
-      }
-      const v = stream(g()).getNthOrLast(2);
-      expect(v).toEqual(43);
-    });
-    it('Should return the last value if the stream is too small', () => {
-      function* g() {
-        yield* [42, 5, 43, 8, 19];
-      }
-      const v = stream(g()).getNthOrLast(20);
-      expect(v).toEqual(19);
-    });
-    it('Should be null for empty streams', () => {
-      const v = stream().nil().getNthOrLast(10);
-      expect(v).toBe(null);
-    });
-    it('Should be able to run on infinite streams', () => {
-      function* g() {
-        let idx = 0;
-        while (true) {
-          yield idx;
-          idx += 1;
+      it('Should be able to join on nil', () => {
+        function* g1() {
+          yield* [1, 2, 3, 4, 5];
         }
-      }
-      const v = stream(g()).getNthOrLast(10);
-      expect(v).toEqual(10);
+        const s = stream().nil().join(g1());
+        expect([...s]).toEqual([1, 2, 3, 4, 5]);
+      });
+    });
+    describe('getNthOrLast', () => {
+      it('Should return the nth value of the stream', () => {
+        function* g() {
+          yield* [42, 5, 43, 8, 19];
+        }
+        const v = stream(g()).getNthOrLast(2);
+        expect(v).toEqual(43);
+      });
+      it('Should return the last value if the stream is too small', () => {
+        function* g() {
+          yield* [42, 5, 43, 8, 19];
+        }
+        const v = stream(g()).getNthOrLast(20);
+        expect(v).toEqual(19);
+      });
+      it('Should be null for empty streams', () => {
+        const v = stream().nil().getNthOrLast(10);
+        expect(v).toBe(null);
+      });
+      it('Should be able to run on infinite streams', () => {
+        function* g() {
+          let idx = 0;
+          while (true) {
+            yield idx;
+            idx += 1;
+          }
+        }
+        const v = stream(g()).getNthOrLast(10);
+        expect(v).toEqual(10);
+      });
     });
   });
 });
