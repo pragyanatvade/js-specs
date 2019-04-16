@@ -1,7 +1,9 @@
 import { compose } from './compose';
-import { stream } from './stream';
+import { canStream } from './stream';
 
-export default {
-  compose,
-  stream
-};
+export default compose(canStream)({ compose });
+
+// export default {
+
+//   stream
+// };

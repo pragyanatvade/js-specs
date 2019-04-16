@@ -1,5 +1,3 @@
-import { compose } from '..';
-
 const canIterate = ({ gen }) => ({ [Symbol.iterator]: () => gen });
 
 const canNil = ({ stream }) => {
@@ -151,31 +149,34 @@ const canGetNthorLast = ({ gen }) => {
   return ({ getNthOrLast });
 };
 
-export const stream = (params) => {
-  const { gen = params } = params || {};
-  const { gen: omit1, ...methods } = compose(
-    canIterate,
-    canNil,
-    canNext,
-    canMap,
+export const canStream = ({ compose }) => {
+  const stream = (params) => {
+    const { gen = params } = params || {};
+    const { gen: omit1, ...methods } = compose(
+      canIterate,
+      canNil,
+      canNext,
+      canMap,
 
-    canDrop,
-    canDropWhile,
-    canFlatMap,
+      canDrop,
+      canDropWhile,
+      canFlatMap,
 
-    canTake,
-    canTakeWhile,
+      canTake,
+      canTakeWhile,
 
-    canFilter,
+      canFilter,
 
-    canEvery,
-    canHas,
-    canJoin,
+      canEvery,
+      canHas,
+      canJoin,
 
-    canGetNthorLast
-  )({ gen, stream });
+      canGetNthorLast
+    )({ gen, stream });
 
-  return methods;
+    return methods;
+  };
+  return ({ stream });
 };
 
-export default stream;
+export default canStream;

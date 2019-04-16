@@ -2,13 +2,21 @@
   "name": "vade-spec",
   "version": "0.0.1",
   "description": "Spec library for javascript",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vadelabs/vade-spec.git"
+  },
+  "scripts": {
+    "build": "babel src/ -d dist/ --source-maps",
+    "build:watch": "babel src/ -d dist/ --watch --source-maps",
+    "dev": "babel-watch src/server.js",
+    "debug": "ndb nodemon dist/server.js",
+    "start": "pm2 start pm2.json",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors"
   },
   "husky": {
     "hooks": {
@@ -60,6 +68,7 @@
     "prettier-eslint": "^8.8.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.3",
     "lodash": "^4.17.11"
   }
 }
