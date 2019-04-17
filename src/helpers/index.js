@@ -1,5 +1,9 @@
 import { compose } from './compose';
-import { streamify } from './stream';
+
+import { canStream } from './stream';
+
+import { canShrink } from './shrinkable';
+
 import { uniformRandomDistribution } from './distribute';
 import { randomGenerator } from './xorshift';
 import { canRandomizeByGenerator, canRandomizeBySeed } from './random';
@@ -12,6 +16,9 @@ const randomGenerators = [
 ];
 
 export default compose(
-  streamify,
+  canStream,
+
+  canShrink,
+
   ...randomGenerators
 )({ compose });
