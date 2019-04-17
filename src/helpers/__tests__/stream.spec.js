@@ -2,7 +2,7 @@ import helpers from '..';
 
 const { stream } = helpers;
 
-describe('gen', () => {
+describe('helpers', () => {
   describe('stream', () => {
     describe('iterator', () => {
       it('should have same values as its underlying', () => {
