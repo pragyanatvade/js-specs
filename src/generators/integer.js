@@ -99,9 +99,19 @@ export const canGenerateInteger = ({ compose, stream, shrinkable }) => {
     )({
       min, max, stream, shrinkable
     });
-    return ({ generate, shrink, shrinkableFor });
+    return ({
+      generate, shrink, shrinkableFor, min, max
+    });
   };
   return ({ integer });
+};
+
+export const canGenerateNatural = ({ integer }) => {
+  const nat = (params) => {
+    const { min, max = params || integer.max } = params || {};
+    return integer({ min: Math.max(0, min), max });
+  };
+  return ({ nat });
 };
 
 export default canGenerateInteger;
