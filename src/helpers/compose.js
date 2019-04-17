@@ -7,6 +7,10 @@ const mergeFreeze = comp(
 
 const reducer = (fn, agg) => mergeFreeze({}, agg, fn(agg));
 
-export const compose = (...fns) => input => reduceRight(reducer, input || {}, fns);
+export const compose = (...args) => (input) => {
+  let fns = args;
+  if (Array.isArray(fns[0])) [fns] = args;
+  return reduceRight(reducer, input || {}, fns);
+};
 
 export default compose;
