@@ -20,7 +20,7 @@ const canXorShift128Plus = ({ xorshift }) => {
   return ({ xorshift128plus });
 };
 
-export const canRandomize = ({ compose }) => {
+export const randomGenerator = ({ compose }) => {
   const { xorshift, xorshift128plus } = compose(
     canXorShift128Plus,
     canXorshift
@@ -28,4 +28,4 @@ export const canRandomize = ({ compose }) => {
   return ({ xorshift, xorshift128plus });
 };
 
-export default canRandomize;
+export default randomGenerator;

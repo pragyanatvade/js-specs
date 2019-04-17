@@ -149,7 +149,7 @@ const canGetNthorLast = ({ gen }) => {
   return ({ getNthOrLast });
 };
 
-export const canStream = ({ compose }) => {
+export const streamify = ({ compose }) => {
   const stream = (params) => {
     const { gen = params } = params || {};
     const { gen: omit1, ...methods } = compose(
@@ -179,4 +179,4 @@ export const canStream = ({ compose }) => {
   return ({ stream });
 };
 
-export default canStream;
+export default streamify;

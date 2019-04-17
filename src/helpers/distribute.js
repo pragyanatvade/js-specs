@@ -49,7 +49,7 @@ const canGenerateUniformIntDistribution = ({ uniformDistribution }) => {
   return ({ uniformIntDistribution });
 };
 
-export const canDistribute = ({ compose }) => {
+export const uniformRandomDistribution = ({ compose }) => {
   const { uniformDistribution, uniformIntDistribution } = compose(
     canGenerateUniformIntDistribution,
     canGenerateUniformDistribution
@@ -57,4 +57,4 @@ export const canDistribute = ({ compose }) => {
   return ({ uniformDistribution, uniformIntDistribution });
 };
 
-export default canDistribute;
+export default uniformRandomDistribution;

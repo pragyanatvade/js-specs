@@ -1,12 +1,17 @@
 import { compose } from './compose';
-import { canStream } from './stream';
-import { canDistribute } from './distribute';
-import { canRandomize } from './xorshift';
-import { canGenerateRandom } from './random';
+import { streamify } from './stream';
+import { uniformRandomDistribution } from './distribute';
+import { randomGenerator } from './xorshift';
+import { canRandomizeByGenerator, canRandomizeBySeed } from './random';
+
+const randomGenerators = [
+  canRandomizeBySeed,
+  canRandomizeByGenerator,
+  uniformRandomDistribution,
+  randomGenerator
+];
 
 export default compose(
-  canStream,
-  canGenerateRandom,
-  canDistribute,
-  canRandomize
+  streamify,
+  ...randomGenerators
 )({ compose });

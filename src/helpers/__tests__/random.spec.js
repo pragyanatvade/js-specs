@@ -1,12 +1,12 @@
 import helpers from '..';
 
-const { random, xorshift128plus } = helpers;
+const { randomByGenerator, xorshift128plus } = helpers;
 
 describe('helpers', () => {
-  describe('random', () => {
+  describe('randomByGenerator', () => {
     describe('next', () => {
       it('Should generate values within range', () => {
-        const rng = random({ gen: xorshift128plus(42) });
+        const rng = randomByGenerator({ gen: xorshift128plus(42) });
         const n = 3;
         for (let i = 0; i < 100; i += 1) {
           const v = rng.next(n);
@@ -17,7 +17,7 @@ describe('helpers', () => {
     });
     describe('nextInt', () => {
       it('When min/max values are provided, Should generate values within range', () => {
-        const rng = random(xorshift128plus(42));
+        const rng = randomByGenerator(xorshift128plus(42));
         const min = 5;
         const max = 100;
         for (let i = 0; i < 100; i += 1) {
@@ -28,8 +28,8 @@ describe('helpers', () => {
       });
       it('When seed is same, should generate same sequence', () => {
         const seed = 32;
-        const rng1 = random({ gen: xorshift128plus(seed) });
-        const rng2 = random({ gen: xorshift128plus(seed) });
+        const rng1 = randomByGenerator({ gen: xorshift128plus(seed) });
+        const rng2 = randomByGenerator({ gen: xorshift128plus(seed) });
         for (let i = 0; i < 100; i += 1) {
           expect(rng1.nextInt()).toEqual(rng2.nextInt());
         }
@@ -38,7 +38,7 @@ describe('helpers', () => {
     describe('nextDouble', () => {
       it('Should produce number within range 0 and 1', () => {
         const seed = 30;
-        const rng = random({ gen: xorshift128plus(seed) });
+        const rng = randomByGenerator({ gen: xorshift128plus(seed) });
         for (let i = 0; i < 100; i += 1) {
           const val = rng.nextDouble();
           expect(val).toBeLessThanOrEqual(1);
@@ -49,7 +49,7 @@ describe('helpers', () => {
     describe.skip('clone', () => {
       it('Should clone the gene', () => {
         const seed = 25;
-        const rng1 = random({ gen: xorshift128plus(seed) });
+        const rng1 = randomByGenerator({ gen: xorshift128plus(seed) });
         const rng2 = rng1.clone();
         for (let i = 0; i < 100; i += 1) {
           expect(rng1.nextInt()).toEqual(rng2.nextInt());

@@ -51,9 +51,9 @@ const canClone = (params) => {
   return ({ clone });
 };
 
-export const canGenerateRandom = ({ compose, uniformIntDistribution }) => {
-  const random = (params) => {
-    const { gen = params } = params;
+export const canRandomizeByGenerator = ({ compose, uniformIntDistribution }) => {
+  const randomByGenerator = (params) => {
+    const { gen = params } = params || {};
     return compose(
       canClone,
       canGenerateDouble,
@@ -64,7 +64,15 @@ export const canGenerateRandom = ({ compose, uniformIntDistribution }) => {
       canGenerateUniform
     )({ gen, uniformIntDistribution });
   };
-  return ({ random });
+  return ({ randomByGenerator });
 };
 
-export default canGenerateRandom;
+export const canRandomizeBySeed = ({ randomByGenerator, xorshift128plus }) => {
+  const randomBySeed = (params) => {
+    const { seed = params } = params;
+    return randomByGenerator(xorshift128plus(seed));
+  };
+  return ({ randomBySeed });
+};
+
+export default canRandomizeByGenerator;
