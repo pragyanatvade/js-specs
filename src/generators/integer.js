@@ -65,6 +65,7 @@ const canShrink = ({
 
   const shrink = (params) => {
     const { value = params, shrunkOnce = false } = params;
+
     return shrinkNumber({
       zero: 0, min, max, current: value, shrunkOnce, halvePos, halveNeg
     });
