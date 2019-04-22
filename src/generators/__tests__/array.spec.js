@@ -21,16 +21,21 @@ describe('generators', () => {
       });
     });
     describe('shrink', () => {
-      it('When integer generator is passed, Should generate array of numbers on every shrink', () => {
-        const seed = 123;// Date.now();
+      it('When integer generator is passed, Should generate an array of numbers on every shrink', () => {
+        const seed = Date.now();
         const min = 3;
         const max = 10;
         const intArb = integer({ min, max });
         const { generate } = array(intArb);
         const { shrink } = generate(rand(seed));
-        const val2 = shrink();
-        const shrinkedValues = [...val2];
-        expect(shrinkedValues.length).toBeGreaterThanOrEqual(0);
+        shrink.every((v) => {
+          const { value } = v;
+          value.forEach((val) => {
+            expect(val).toBeGreaterThanOrEqual(min);
+            expect(val).toBeLessThanOrEqual(max);
+          });
+          return true;
+        });
       });
     });
   });
