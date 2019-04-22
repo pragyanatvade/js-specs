@@ -2,9 +2,12 @@ import helpers from '../helpers';
 
 import { canGenerateInteger, canGenerateNatural } from './integer';
 import { canGenerateArray } from './array';
+import { canGenerateBoolean } from './boolean';
 
 
-const { compose, stream, shrinkable } = helpers;
+const {
+  compose
+} = helpers;
 
 const numbers = [
   canGenerateNatural,
@@ -15,7 +18,12 @@ const arrays = [
   canGenerateArray
 ];
 
+const booleans = [
+  canGenerateBoolean
+];
+
 export default compose(
+  ...booleans,
   ...arrays,
   ...numbers
-)({ compose, stream, shrinkable });
+)(helpers);
