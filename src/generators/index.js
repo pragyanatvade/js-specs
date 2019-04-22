@@ -4,6 +4,7 @@ import { canGenerateInteger, canGenerateNatural } from './integer';
 import { canGenerateArray } from './array';
 import { canGenerateBoolean } from './boolean';
 import { canGenerateChar } from './character';
+import { canGenerateConstant, canGenerateConstantFrom } from './constant';
 
 const { compose } = helpers;
 
@@ -24,7 +25,13 @@ const chars = [
   canGenerateChar
 ];
 
+const constants = [
+  canGenerateConstant,
+  canGenerateConstantFrom
+];
+
 export default compose(
+  ...constants,
   ...chars,
   ...booleans,
   ...arrays,
