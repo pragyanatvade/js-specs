@@ -28,7 +28,7 @@ describe('generators', () => {
         const intArb = integer({ min, max });
         const { generate } = array(intArb);
         const { shrink } = generate(rand(seed));
-        shrink.every((v) => {
+        shrink().every((v) => {
           const { value } = v;
           value.forEach((val) => {
             expect(val).toBeGreaterThanOrEqual(min);
