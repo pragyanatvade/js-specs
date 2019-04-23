@@ -13,6 +13,7 @@ import { canGenerateOneOf } from './one-of';
 import { canGenerateOption } from './option';
 import { canGenerateFloat, canGenerateDouble } from './float';
 import { canGenerateRecord } from './record';
+import { canGenerateFreq } from './freq';
 
 const { compose } = helpers;
 
@@ -71,7 +72,12 @@ const records = [
   canGenerateRecord
 ];
 
+const freqs = [
+  canGenerateFreq
+];
+
 export default compose(
+  ...freqs,
   ...records,
   ...floats,
   ...options,
