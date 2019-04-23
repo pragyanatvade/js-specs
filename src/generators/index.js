@@ -10,6 +10,7 @@ import { canGenerateSet } from './set';
 import { canGenerateTuple } from './tuple';
 import { canGenerateDictionary } from './dictionary';
 import { canGenerateOneOf } from './one-of';
+import { canGenerateOption } from './option';
 
 const { compose } = helpers;
 
@@ -55,7 +56,12 @@ const oneOfs = [
   canGenerateOneOf
 ];
 
+const options = [
+  canGenerateOption
+];
+
 export default compose(
+  ...options,
   ...oneOfs,
   ...dicts,
   ...tuples,
