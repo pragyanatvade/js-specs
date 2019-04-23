@@ -11,6 +11,7 @@ import { canGenerateTuple } from './tuple';
 import { canGenerateDictionary } from './dictionary';
 import { canGenerateOneOf } from './one-of';
 import { canGenerateOption } from './option';
+import { canGenerateFloat, canGenerateDouble } from './float';
 
 const { compose } = helpers;
 
@@ -60,7 +61,13 @@ const options = [
   canGenerateOption
 ];
 
+const floats = [
+  canGenerateFloat,
+  canGenerateDouble
+];
+
 export default compose(
+  ...floats,
   ...options,
   ...oneOfs,
   ...dicts,
