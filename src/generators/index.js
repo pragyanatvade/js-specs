@@ -12,6 +12,7 @@ import { canGenerateDictionary } from './dictionary';
 import { canGenerateOneOf } from './one-of';
 import { canGenerateOption } from './option';
 import { canGenerateFloat, canGenerateDouble } from './float';
+import { canGenerateRecord } from './record';
 
 const { compose } = helpers;
 
@@ -66,7 +67,12 @@ const floats = [
   canGenerateDouble
 ];
 
+const records = [
+  canGenerateRecord
+];
+
 export default compose(
+  ...records,
   ...floats,
   ...options,
   ...oneOfs,
