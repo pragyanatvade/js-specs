@@ -5,6 +5,7 @@ import { canStream } from './stream';
 import { canShrink } from './shrinkable';
 
 import { canMap } from './map';
+import { canFilter } from './filter';
 
 import { uniformRandomDistribution } from './distribute';
 import { randomGenerator } from './xorshift';
@@ -19,6 +20,7 @@ const randomGenerators = [
 
 export default compose(
   canMap,
+  canFilter,
 
   canStream,
 
