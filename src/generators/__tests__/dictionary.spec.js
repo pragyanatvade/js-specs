@@ -12,8 +12,11 @@ describe('generators', () => {
         const key = string({ min: 0, max: 10 });
         const value = integer({ min: 0, max: 10 });
         const arb = dict({ key, value });
-        const resp = arb.generate(rand(seed));
-        console.log('resp', resp);
+        const { value: dictObj } = arb.generate(rand(seed));
+        Object.keys(dictObj).forEach((k) => {
+          expect(typeof k).toEqual('string');
+          expect(typeof dictObj[k]).toEqual('number');
+        });
       });
     });
   });
