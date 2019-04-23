@@ -8,6 +8,7 @@ import { canGenerateString } from './string';
 import { canGenerateConstant, canGenerateConstantFrom } from './constant';
 import { canGenerateSet } from './set';
 import { canGenerateTuple } from './tuple';
+import { canGenerateDictionary } from './dictionary';
 
 const { compose } = helpers;
 
@@ -45,7 +46,12 @@ const tuples = [
   canGenerateTuple
 ];
 
+const dicts = [
+  canGenerateDictionary
+];
+
 export default compose(
+  ...dicts,
   ...tuples,
   ...sets,
   ...constants,
