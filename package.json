@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
+    "jsonpath": "^1.0.1",
     "lodash": "^4.17.11",
     "transducers-js": "^0.4.174"
   }
