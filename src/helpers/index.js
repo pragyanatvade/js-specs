@@ -22,9 +22,8 @@ export default compose(
   canMap,
   canFilter,
 
-  canStream,
-
   canShrink,
 
+  canStream,
   ...randomGenerators
 )({ compose });

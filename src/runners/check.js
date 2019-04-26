@@ -1,6 +1,6 @@
 
 export const canCheckProp = ({
-  readConfig, shrinkable, stream, sourceValuesIterator, runnerIterator, randomBySeed
+  readConfig, shrinkable, stream, valueIterator, runIterator, randomBySeed
 }) => {
   const decorateProperty = ({ prop, params }) => {
     const dProp = prop.isAsync() && params.timeout !== null ? {} : prop;
@@ -8,7 +8,7 @@ export const canCheckProp = ({
   };
 
   const runSync = ({ prop, sourceValues, verbose }) => {
-    const runner = runnerIterator({ sourceValues, verbose });
+    const runner = runIterator({ sourceValues, verbose });
 
     for (const v of runner) { // eslint-disable-line
       const out = prop.run(v);
@@ -53,7 +53,7 @@ export const canCheckProp = ({
     const maxInitialIterations = qParams.path.length === 0 ? qParams.numRuns : -1;
     const maxSkips = qParams.numRuns * qParams.maxSkipsPerRun;
     const initialValues = buildInitialValues({ gen, params: qParams });
-    const sourceValues = sourceValuesIterator({
+    const sourceValues = valueIterator({
       initialValues,
       maxInitialIterations,
       remainingSkips: maxSkips

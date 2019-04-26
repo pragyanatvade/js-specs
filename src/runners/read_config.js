@@ -74,7 +74,7 @@ const readExamples = (params) => {
 };
 
 export const canReadConfig = ({ compose, xorshift128plus }) => {
-  const read = params => compose(readSeed,
+  const readConfig = params => compose(readSeed,
     readRandomType,
     readEndOnFailure,
     readNumRuns,
@@ -85,5 +85,5 @@ export const canReadConfig = ({ compose, xorshift128plus }) => {
     readVerbose,
     readLogger,
     readExamples)({ xorshift128plus, ...params });
-  return ({ read });
+  return ({ readConfig });
 };
