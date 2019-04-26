@@ -1,5 +1,5 @@
 {
-  "name": "vade-spec",
+  "name": "@vadelabs/specs",
   "version": "0.0.1",
   "description": "Spec library for javascript",
   "main": "dist/index.js",
