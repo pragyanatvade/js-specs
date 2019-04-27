@@ -1,13 +1,14 @@
 const DOUBLE_FACTOR = 2 ** 27;
 const DOUBLE_DIVISOR = 2 ** -53;
 
-const next = n => integer({ min: 0, max: (1 << n) - 1 }); // eslint-disable-line
 
-export const canGenerateFloat = ({ map }) => {
+export const canGenerateFloat = ({ map, integer }) => {
+  const next = n => integer({ min: 0, max: (1 << n) - 1 }); // eslint-disable-line
+
   const floatArb = () => {
-    const mapper = v => v / (1 << 24); // eslint-disable-line
+    const iterator = v => v / (1 << 24); // eslint-disable-line
     const arb = next(24);
-    return map({ mapper, arb });
+    return map(arb, iterator);
   };
 
   const float = (params) => {
@@ -19,11 +20,13 @@ export const canGenerateFloat = ({ map }) => {
   return ({ float });
 };
 
-export const canGenerateDouble = ({ tuple, map }) => {
+export const canGenerateDouble = ({ tuple, map, integer }) => {
+  const next = n => integer({ min: 0, max: (1 << n) - 1 }); // eslint-disable-line
+
   const doubleArb = () => {
-    const mapper = v => (v[0] * DOUBLE_FACTOR + v[1]) * DOUBLE_DIVISOR;
+    const iterator = v => (v[0] * DOUBLE_FACTOR + v[1]) * DOUBLE_DIVISOR;
     const arb = tuple([next(26), next(27)]);
-    return map({ mapper, arb });
+    return map(arb, iterator);
   };
 
   const double = (params = {}) => {
