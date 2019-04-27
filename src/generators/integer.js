@@ -30,7 +30,7 @@ const canShrinkNumeric = ({ stream }) => {
     function* shrinkIncr() {
       const gap = shrunkOnce ? halveNeg(realGap) : realGap;
       for (let i = gap; i < 0; i = halveNeg(i)) {
-        yield current - i;
+        yield current + i;
       }
     }
 
@@ -48,6 +48,7 @@ const canShrinkNumber = ({ shrinkNumeric }) => {
         current, target: zero, shrunkOnce, halvePos, halveNeg
       });
     }
+
     return current < zero ? shrinkNumeric({
       current, target: max, shrunkOnce, halvePos, halveNeg
     }) : shrinkNumeric({
@@ -65,10 +66,10 @@ const canShrink = ({
 
   const shrink = (params) => {
     const { value = params, shrunkOnce = false } = params;
-
-    return shrinkNumber({
+    const resp = shrinkNumber({
       zero: 0, min, max, current: value, shrunkOnce, halvePos, halveNeg
     });
+    return resp;
   };
   return ({ shrink });
 };
