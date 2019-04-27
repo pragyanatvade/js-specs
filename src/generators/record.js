@@ -3,14 +3,14 @@ export const canGenerateRecord = ({ tuple, map, option }) => {
     const keys = Object.keys(schema);
     const arbs = keys.map(key => schema[key]);
     const arb = tuple(arbs);
-    const mapper = (item) => {
+    const iterator = (item) => {
       const obj = {};
       for (let i = 0; i < keys.length; i += 1) {
         obj[keys[i]] = item[i];
       }
       return obj;
     };
-    return map({ arb, mapper });
+    return map(arb, iterator);
   };
   const record = (params) => {
     const { schema = params, constraints } = params;
