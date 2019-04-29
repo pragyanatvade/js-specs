@@ -3,7 +3,7 @@ export const canDefineCollOf = ({
 }) => {
   const collOfSpec = (params) => {
     const { predicate = params } = params || {};
-    const items = [predicate];
+    const items = Array.isArray(params) ? params : [predicate];
     const conform = conformCombine({ items, op: collOf });
     const pred = predicateCombine({ items, op: collOf });
     const valid = validCombine({ items, op: collOf });

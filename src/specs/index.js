@@ -14,6 +14,7 @@ import { canDefineOr } from './or';
 import { canCombine } from './combine';
 import { canDefineKeys } from './keys';
 import { canDefineCollOf } from './coll-of';
+import { canDefineTuple } from './tuple';
 
 const { compose } = helpers;
 
@@ -21,6 +22,7 @@ const registry = new Map();
 
 
 export default compose(
+  canDefineTuple,
   canDefineCollOf,
 
   canDefineKeys,
