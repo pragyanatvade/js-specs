@@ -22,11 +22,12 @@ import { canCheckSpec } from './spec';
 import { canApplyAnd } from './and';
 import { canApplyOr } from './or';
 import { canApplyCollOf } from './coll-of';
-
+import { canApplyTuple } from './tuple';
 
 const { compose } = helpers;
 
 export default compose(
+  canApplyTuple,
   canApplyCollOf,
   canApplyAnd,
   canApplyOr,
