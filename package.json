@@ -41,7 +41,7 @@
     ],
     "testMatch": [
       "**/__tests__/**/*.js"
-    ] 
+    ]
   },
   "author": "Pragyan Tripathi <pragyan@vadelabs.com>",
   "license": "MIT",

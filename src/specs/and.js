@@ -16,4 +16,4 @@ export const canDefineAnd = ({
   return ({ and: andSpec });
 };
 
-export default { canDefineAnd };
+export default canDefineAnd;

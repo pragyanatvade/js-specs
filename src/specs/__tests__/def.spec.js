@@ -2,7 +2,7 @@ import specs from '..';
 import preds from '../../predicates';
 
 describe('specs', () => {
-  describe('define', () => {
+  describe('def', () => {
     it('When key and predicate is passed, Should return true for valid data in the string', () => {
       const key = 'first-name';
       specs.def({ key, predicate: preds.string });
