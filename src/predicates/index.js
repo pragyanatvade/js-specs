@@ -21,10 +21,13 @@ import { canCheckSpec } from './spec';
 
 import { canApplyAnd } from './and';
 import { canApplyOr } from './or';
+import { canApplyCollOf } from './coll-of';
+
 
 const { compose } = helpers;
 
 export default compose(
+  canApplyCollOf,
   canApplyAnd,
   canApplyOr,
 
