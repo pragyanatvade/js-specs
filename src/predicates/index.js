@@ -23,10 +23,12 @@ import { canApplyAnd } from './and';
 import { canApplyOr } from './or';
 import { canApplyCollOf } from './coll-of';
 import { canApplyTuple } from './tuple';
+import { canApplyMapOf } from './map-of';
 
 const { compose } = helpers;
 
 export default compose(
+  canApplyMapOf,
   canApplyTuple,
   canApplyCollOf,
   canApplyAnd,
