@@ -1,11 +1,9 @@
 
-// export const canDefineFdef = ({ registry }) => {
-//   const fdef = ({
-//     key, args, ret, fn
-//   }) => {
+export const canDefineFdef = () => {
+  const fdef = () => {
 
-//   };
-//   return ({ fdef });
-// };
+  };
+  return ({ fdef });
+};
 
-// export default canDefineFdef;
+export default canDefineFdef;
