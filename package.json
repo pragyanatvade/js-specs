@@ -1,7 +1,7 @@
 {
   "name": "@vadelabs/specs",
   "version": "0.0.1-alpha.0",
-  "description": "Spec library for javascript",
+  "description": "Idiomatic spec library for NodeJS",
   "main": "dist/index.js",
   "repository": {
     "type": "git",

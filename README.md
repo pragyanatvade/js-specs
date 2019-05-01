@@ -1,2 +1,2 @@
 # @vadelabs/specs
-Idiomatic spec library for javascript
+Idiomatic spec library for NodeJS
