@@ -16,6 +16,8 @@ import { canDefineKeys } from './keys';
 import { canDefineCollOf } from './coll-of';
 import { canDefineTuple } from './tuple';
 import { canDefineCat } from './cat';
+import { canDefineFdef } from './fdef';
+import { canSpecify, canSpecifyAll } from './specify';
 
 const { compose } = helpers;
 
@@ -23,6 +25,10 @@ const registry = new Map();
 
 
 export default compose(
+  canSpecifyAll,
+  canSpecify,
+
+  canDefineFdef,
   canDefineCat,
   canDefineTuple,
   canDefineCollOf,
