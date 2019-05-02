@@ -4,8 +4,8 @@ export const canSpecify = ({ conform }) => {
     const { fn = params, key = params.name } = params;
     const args = arguments; // eslint-disable-line
     const ret = fn.apply(this, args);
-    conform({ key, args, ret });
-    return ret;
+    const resp = conform({ key, data: { args, ret } });
+    return resp;
   };
   return ({ specify });
 };

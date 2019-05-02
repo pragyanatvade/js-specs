@@ -18,7 +18,8 @@ export const canDefineCat = ({
     return resp;
   };
 
-  const predicateCombine = ({ items }) => ({ data }) => {
+  const predicateCombine = ({ items }) => (params) => {
+    const { data = params } = params || {};
     const part = partitionAll(2);
     let idx = 0;
     const reducer = (acc, item) => {
