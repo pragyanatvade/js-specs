@@ -1,12 +1,12 @@
 export const canMerge = ({
-  _,
+  _: { set },
   specTransducer
 }) => {
   const conformReducer = params => (acc, spec) => {
     const { data = params } = params || {};
     const { req: [key], conform } = spec;
     const value = conform({ key, data: data[key] });
-    _.set(acc, key, value);
+    set(acc, key, value);
     return acc;
   };
   const predicateReducer = params => (acc, spec) => {

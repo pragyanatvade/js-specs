@@ -20,6 +20,7 @@ import { canDefineFdef } from './fdef';
 import { canSpecify, canSpecifyAll } from './specify';
 import { canMerge } from './merge';
 import { canTransduceSpec } from './transducer';
+import { canDefineSchema } from './schema';
 
 const { compose } = helpers;
 
@@ -29,6 +30,8 @@ const registry = new Map();
 export default compose(
   canSpecifyAll,
   canSpecify,
+
+  canDefineSchema,
 
   canMerge,
   canDefineFdef,

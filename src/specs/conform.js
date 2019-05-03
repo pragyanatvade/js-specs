@@ -7,9 +7,13 @@ export const canConformFn = ({ registry, predicates: { invalid } }) => {
   return ({ conformFn });
 };
 
-export const canConform = ({ registry, conformFn }) => {
-  const conform = ({ key, data, predicate }) => {
-    if (!key && predicate) return conformFn({ key, data, predicate });
+export const canConform = ({ registry, conformFn, predicates: { fn } }) => {
+  const conform = (...args) => {
+    let [{ key, predicate, data }] = args;
+    if (args.length > 1) [key, data] = args;
+    if (fn(key)) predicate = key;
+
+    if (fn(predicate)) return conformFn({ key, data, predicate });
     const { conform: specConform } = registry.get(key);
     return specConform({ key, data });
   };
