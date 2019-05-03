@@ -19,7 +19,7 @@ export const canDefine = ({ registry, defineSpec }) => {
     if (params.length > 1) [key, predicate] = params;
     if (!key || !predicate) throw new Error('You must pass key and predicate to define spec appropriately');
     registry.set(key, {
-      req: [key], opt: [], keys: [key], ...defineSpec({ predicate })
+      keys: () => [key], ...defineSpec({ predicate })
     });
     return registry;
   };
