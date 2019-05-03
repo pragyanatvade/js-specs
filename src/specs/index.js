@@ -18,6 +18,8 @@ import { canDefineTuple } from './tuple';
 import { canDefineCat } from './cat';
 import { canDefineFdef } from './fdef';
 import { canSpecify, canSpecifyAll } from './specify';
+import { canMerge } from './merge';
+import { canTransduceSpec } from './transducer';
 
 const { compose } = helpers;
 
@@ -28,6 +30,7 @@ export default compose(
   canSpecifyAll,
   canSpecify,
 
+  canMerge,
   canDefineFdef,
   canDefineCat,
   canDefineTuple,
@@ -49,7 +52,9 @@ export default compose(
   canExplainFn,
 
   canConform,
-  canConformFn
+  canConformFn,
+
+  canTransduceSpec,
 )({
   ...helpers, registry, predicates, transduce, _, jsonpath
 });

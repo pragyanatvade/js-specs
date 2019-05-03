@@ -20,8 +20,8 @@ export const canDefineCat = ({
 
   const predicateCombine = ({ items }) => (params) => {
     const { data = params } = params || {};
-    const part = partitionAll(2);
     let idx = 0;
+    const part = partitionAll(2);
     const reducer = (acc, item) => {
       const [, pred] = item;
       const tmpAcc = acc && pred(data[idx]);
@@ -32,8 +32,9 @@ export const canDefineCat = ({
     return resp;
   };
 
-  const specCat = (params) => {
-    const items = params;
+  const specCat = (...params) => {
+    let items = params;
+    if (Array.isArray(params[0])) [items] = params;
     const conform = conformCombine({ items });
     const predicate = predicateCombine({ items });
     return ({ conform, predicate, valid: predicate });

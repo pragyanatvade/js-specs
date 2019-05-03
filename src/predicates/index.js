@@ -8,6 +8,8 @@ import { canCheckFinite } from './finite';
 import { canCheckInteger } from './integer';
 import { canCheckNumber } from './number';
 import { canCheckZero } from './zero';
+import { canCheckBoolean } from './bool';
+
 
 import { canCheckEven } from './even';
 import { canCheckOdd } from './odd';
@@ -28,6 +30,8 @@ import { canApplyMapOf } from './map-of';
 const { compose } = helpers;
 
 export default compose(
+  canCheckBoolean,
+
   canApplyMapOf,
   canApplyTuple,
   canApplyCollOf,

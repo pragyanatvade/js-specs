@@ -15,7 +15,9 @@ export const canDefineMultiple = ({
 
 export const canDefine = ({ registry, defineSpec }) => {
   const def = ({ key, predicate }) => {
-    registry.set(key, defineSpec({ predicate }));
+    registry.set(key, {
+      req: [key], opt: [], keys: [key], ...defineSpec({ predicate })
+    });
     return registry;
   };
 
