@@ -33,7 +33,7 @@ describe('specs', () => {
         const userSpec = specs.conform(':user', user);
         expect(userSpec).toEqual(user);
 
-        specs.def(':user-addr', specs.conform([':user', ':addr']));
+        specs.def(':user-addr', specs.union([':user', ':addr']));
         const unionSpec = specs.conform(':user-addr', { user, addr });
         expect(unionSpec).toEqual({ user, addr });
       });
