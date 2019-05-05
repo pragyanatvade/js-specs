@@ -14,10 +14,10 @@ describe('specs', () => {
 
         specs.def({ key: ':animal/kind', predicate: preds.string });
         specs.def({ key: ':animal/says', predicate: preds.string });
-        specs.def({ key: ':animal/common', predicate: specs.keys({ req: [':animal/kind', ':animal/says'] }) });
+        specs.def({ key: ':animal/common', predicate: specs.keys([':animal/kind', ':animal/says']) });
         specs.def({ key: ':dog/tail?', predicate: preds.boolean });
         specs.def({ key: ':dog/breed', predicate: preds.string });
-        specs.def({ key: ':animal/dog', predicate: specs.merge([':animal/common', specs.keys({ req: [':dog/tail?', ':dog/breed'] })]) });
+        specs.def({ key: ':animal/dog', predicate: specs.merge([':animal/common', specs.keys([':dog/tail?', ':dog/breed'])]) });
 
         const resp = specs.conform({ key: ':animal/dog', data: dog });
         expect(resp).toEqual(dog);

@@ -54,7 +54,7 @@ export const canDefineKeys = ({
     return ({
       req,
       opt,
-      keys: [...req, ...opt],
+      keys: () => [...req, ...opt],
       conform,
       predicate,
       valid: predicate,
