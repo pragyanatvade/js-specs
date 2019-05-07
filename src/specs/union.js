@@ -1,2 +1,2 @@
-export const canUnion = ({ merge }) => ({ union: merge });
+export const canUnion = ({ keys }) => ({ union: keys });
 export default canUnion;

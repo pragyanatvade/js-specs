@@ -6,8 +6,9 @@ export const canDefineKeys = ({
   jsonpath,
   registry
 }) => {
-  const conformReducer = ({ items }) => ({ data }) => {
+  const conformReducer = ({ items }) => (params) => {
     const reducer = (acc, item) => {
+      const { data = params } = params || {};
       const { conform } = registry.get(item);
       const value = conform({ key: item, data: data[item] });
       _.set(acc, item, value);
