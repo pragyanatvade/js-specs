@@ -34,8 +34,11 @@ describe('specs', () => {
         expect(userSpec).toEqual(user);
 
         specs.def(':user-addr', specs.union([':user', ':addr']));
-        const unionSpec = specs.conform(':user-addr', { user, addr });
-        expect(unionSpec).toEqual({ user, addr });
+        const unionSpec = specs.conform(':user-addr', { ...user, ...addr });
+        // const tmp = specs.union([':user', ':addr']);
+        // console.log(tmp.keys());
+        // console.log(unionSpec.keys('user-addr'));
+        expect(unionSpec).toEqual({ ...user, ...addr });
       });
     });
   });

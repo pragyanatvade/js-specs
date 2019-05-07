@@ -1,6 +1,2 @@
-export const canUnion = ({ merge }) => {
-  const union = merge;
-  return ({ union });
-};
-
+export const canUnion = ({ merge }) => ({ union: merge });
 export default canUnion;
