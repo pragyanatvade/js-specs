@@ -60,6 +60,7 @@
     "@babel/preset-env": "^7.3.4",
     "babel-eslint": "^10.0.1",
     "babel-watch": "^7.0.0",
+    "debug": "^4.1.1",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint-config-airbnb": "^17.0.0",
