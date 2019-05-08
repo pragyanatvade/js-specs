@@ -22,6 +22,7 @@ import { canMerge } from './merge';
 import { canTransduceSpec } from './transducer';
 import { canDefineSchema } from './schema';
 import { canUnion } from './union';
+import { canSelect } from './select';
 
 const { compose } = helpers;
 
@@ -32,6 +33,7 @@ export default compose(
   canSpecifyAll,
   canSpecify,
 
+  canSelect,
   canUnion,
   canDefineSchema,
 

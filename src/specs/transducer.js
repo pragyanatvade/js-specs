@@ -8,7 +8,7 @@ export const canTransduceSpec = ({
       let spec = item;
       if (isString(item)) spec = registry.get(item);
       const { keys } = spec;
-      return [...keys()];
+      return keys();
     };
 
     const mapper = (key) => {
