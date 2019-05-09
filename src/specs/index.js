@@ -7,10 +7,15 @@ import predicates from '../predicates';
 
 import { canConform, canConformFn } from './conform';
 import { canExplain, canExplainFn } from './explain';
+import { canGenerateDoc } from './doc';
+import { canEncode } from './encode';
+import { canDecode } from './decode';
 import { canValidate } from './valid';
+
 import { canDefineMultiple, canDefine, canDefineByPredicate } from './def';
 import { canDefineAnd } from './and';
 import { canDefineOr } from './or';
+
 import { canCombine } from './combine';
 import { canDefineKeys } from './keys';
 import { canDefineCollOf } from './coll-of';
@@ -32,6 +37,10 @@ const registry = new Map();
 export default compose(
   canSpecifyAll,
   canSpecify,
+
+  canGenerateDoc,
+  canEncode,
+  canDecode,
 
   canSelect,
   canUnion,

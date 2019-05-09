@@ -1,5 +1,5 @@
-export const canGenerateDocFn = ({ predicates: { fn } }) => {
-  const docFn = ({
+export const canGenerateDoc = ({ predicates: { fn } }) => {
+  const doc = ({
     key, predicate
   }) => {
     if (!key && fn(predicate)) {
@@ -8,7 +8,7 @@ export const canGenerateDocFn = ({ predicates: { fn } }) => {
     return '';
   };
 
-  return ({ docFn });
+  return ({ doc });
 };
 
-export default { canGenerateDocFn };
+export default canGenerateDoc;
