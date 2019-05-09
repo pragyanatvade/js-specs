@@ -4,4 +4,3 @@ export const canSeq = () => {
 };
 
 export default canSeq;
-
