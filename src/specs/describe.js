@@ -1,6 +1,6 @@
-export const canDescribeFn = () => {
-  const describeFn = () => {};
-  return ({ describeFn });
+export const canDescribe = () => {
+  const describe = () => {};
+  return ({ describe });
 };
 
-export default { canDescribeFn };
+export default { canDescribe };
