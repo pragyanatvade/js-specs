@@ -28,6 +28,7 @@ import { canTransduceSpec } from './transducer';
 import { canDefineSchema } from './schema';
 import { canUnion } from './union';
 import { canSelect } from './select';
+import { canSeq } from './seq';
 
 const { compose } = helpers;
 
@@ -45,6 +46,7 @@ export default compose(
   canSelect,
   canUnion,
   canDefineSchema,
+  canSeq,
 
   canMerge,
   canDefineFdef,
