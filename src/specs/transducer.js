@@ -1,5 +1,7 @@
 export const canTransduceSpec = ({
-  predicates: { isString }, registry, transduce: {
+  predicates: { isString },
+  registry,
+  transduce: {
     comp, transduce, map, mapcat
   }
 }) => {

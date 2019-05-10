@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import transduce from 'transducers-js';
 import jsonpath from 'jsonpath';
+import shortid from 'shortid';
 
 import helpers from '../helpers';
 import predicates from '../predicates';
@@ -74,5 +75,5 @@ export default compose(
 
   canTransduceSpec,
 )({
-  ...helpers, registry, predicates, transduce, _, jsonpath
+  ...helpers, registry, predicates, transduce, _, jsonpath, shortid
 });

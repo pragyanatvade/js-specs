@@ -1,13 +1,16 @@
 export const canDefineMultiple = ({
-  def, transduce: { map, into }
+  def,
+  transduce: { map, into },
+  shortid,
+  predicates: { isString, isFunction }
 }) => {
   const mapper = (item) => {
-    const { key, predicate } = item;
-    if (key && predicate) {
-      def(item);
-      return key;
-    }
-    return item;
+    const {
+      key = isString(item) ? item : shortid.generate(),
+      predicate = isFunction(item) ? item : null
+    } = item;
+    if (key && predicate) def(key, predicate);
+    return key;
   };
   const mdef = items => into([], map(mapper), items);
   return ({ mdef, multiDefine: mdef });
@@ -19,9 +22,10 @@ export const canDefine = ({ registry, defineSpec }) => {
     if (params.length > 1) [key, predicate] = params;
     if (!key || !predicate) throw new Error('You must pass key and predicate to define spec appropriately');
     registry.set(key, {
-      keys: () => [key], ...defineSpec({ predicate })
+      keys: () => [key],
+      ...defineSpec(predicate)
     });
-    return registry;
+    return registry.get(key);
   };
 
   return ({ def, define: def });
@@ -37,7 +41,8 @@ export const canDefineByPredicate = ({
     isSpec
   }
 }) => {
-  const defineSpec = ({ predicate }) => {
+  const defineSpec = (params) => {
+    const { predicate = params } = params || {};
     if (isSpec(predicate)) return predicate;
     if (isFunction(predicate)) {
       const valid = ({ data }) => predicate(data);

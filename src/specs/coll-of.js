@@ -1,17 +1,26 @@
 export const canDefineCollOf = ({
-  conformCombine, predicateCombine, validCombine, explainCombine, predicates: { collOf },
+  mdef,
+  specTransducer,
+  transduce: { reduce }
 }) => {
-  const collOfSpec = (params) => {
-    const { predicate = params } = params || {};
-    const items = Array.isArray(params) ? params : [predicate];
-    const conform = conformCombine({ items, op: collOf });
-    const pred = predicateCombine({ items, op: collOf });
-    const valid = validCombine({ items, op: collOf });
-    const explain = explainCombine({ items, op: collOf });
+  const predicateReducer = params => (acc, spec) => {
+    const { data = params } = params || {};
+    const { predicate } = spec;
+    const reducer = (ac, datum) => ac && predicate(datum);
+    const resp = reduce(reducer, true, data);
+    return acc && resp;
+  };
 
-    return ({
-      conform, predicate: pred, valid, isValid: valid, explain
+  const collOfSpec = (...params) => {
+    const [predicate, options = {}] = params;
+    const predicates = Array.isArray(predicate) ? predicate : [predicate];
+    const items = mdef(predicates);
+
+    const pred = specTransducer({
+      items, reducer: predicateReducer, init: [], options
     });
+
+    return ({ predicate: pred });
   };
   return ({ collOf: collOfSpec });
 };
