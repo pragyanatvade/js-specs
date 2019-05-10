@@ -33,7 +33,7 @@ export const canMerge = ({
     const conform = specTransducer({ items, reducer: conformReducer, init: {} });
     const predicate = specTransducer({ items, reducer: predicateReducer, init: true });
     return ({
-      keys, conform, predicate, valid: predicate
+      keys, conform, predicate
     });
   };
   return ({ merge });
