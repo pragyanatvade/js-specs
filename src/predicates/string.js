@@ -1,5 +1,8 @@
 export const canCheckString = ({ _ }) => {
-  const str = data => _.isString(data);
+  const str = (params) => {
+    const { data = params } = params || {};
+    return _.isString(data);
+  };
   return ({
     str,
     string: str,

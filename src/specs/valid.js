@@ -1,8 +1,13 @@
-export const canValidate = ({ registry }) => {
-  const valid = ({ key, data, predicate }) => {
-    if (!key) { return predicate(data); }
+export const canValidate = ({ registry, predicates: { isFunction } }) => {
+  const valid = (...params) => {
+    let [{ key, data, predicate }] = params;
+    if (params.length > 1) [key, data] = params;
+    if ((key && isFunction(key)) || isFunction(predicate)) {
+      predicate = key || predicate;
+      return predicate(data);
+    }
     const { valid: specValidate } = registry.get(key);
-    return specValidate({ key, data });
+    return specValidate(data);
   };
   return ({ valid, isValid: valid });
 };
