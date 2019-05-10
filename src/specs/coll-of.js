@@ -11,18 +11,17 @@ export const canDefineCollOf = ({
     return acc && resp;
   };
 
-  const collOfSpec = (...params) => {
+  const collOf = (...params) => {
     const [predicate, options = {}] = params;
     const predicates = Array.isArray(predicate) ? predicate : [predicate];
     const items = mdef(predicates);
-
-    const pred = specTransducer({
+    const preds = specTransducer({
       items, reducer: predicateReducer, init: [], options
     });
 
-    return ({ predicate: pred });
+    return ({ predicate: preds });
   };
-  return ({ collOf: collOfSpec });
+  return ({ collOf });
 };
 
 export default canDefineCollOf;
