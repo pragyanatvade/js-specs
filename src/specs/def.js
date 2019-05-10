@@ -33,30 +33,22 @@ export const canDefine = ({ registry, defineSpec }) => {
 
 export const canDefineByPredicate = ({
   conformFn,
-  explainFn,
-  describeFn,
-  docFn,
   predicates: {
-    isFunction,
-    isSpec
+    isFunction
   }
 }) => {
   const defineSpec = (params) => {
-    const { predicate = params } = params || {};
-    if (isSpec(predicate)) return predicate;
-    if (isFunction(predicate)) {
-      const valid = ({ data }) => predicate(data);
-      return {
-        conform: conformFn,
-        predicate,
-        valid,
-        isValid: valid,
-        explain: explainFn,
-        doc: docFn,
-        describe: describeFn
-      };
-    }
-    return {};
+    const {
+      predicate = isFunction(params) ? params : null,
+      conform = conformFn
+    } = params;
+
+    return {
+      predicate,
+      conform,
+      valid: predicate,
+      isValid: predicate,
+    };
   };
 
   return ({ defineSpec });

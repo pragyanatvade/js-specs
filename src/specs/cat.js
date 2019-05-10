@@ -6,7 +6,6 @@ export const canDefineCat = ({
 }) => {
   const conformReducer = ({ items }) => (params) => {
     const { data = params } = params || {};
-
     const part = partitionAll(2);
     let idx = 0;
     const mapper = (item) => {
@@ -40,7 +39,8 @@ export const canDefineCat = ({
     const conform = conformReducer({ items });
     const predicate = predicateReducer({ items });
     return ({
-      conform, predicate, valid: predicate, isValid: predicate
+      conform,
+      predicate
     });
   };
   return ({ cat: specCat });

@@ -21,6 +21,7 @@ export const canDefineCollOf = ({
 
     return ({ predicate: preds });
   };
+
   return ({ collOf });
 };
 
