@@ -28,8 +28,7 @@ import { canApplyTuple } from './tuple';
 import { canApplyMapOf } from './map-of';
 
 const { compose } = helpers;
-
-export default compose(
+const predicates = compose(
   canCheckBoolean,
 
   canApplyMapOf,
@@ -53,3 +52,5 @@ export default compose(
   canCheckFinite,
   canCheckNil,
 )({ _, transduce });
+
+export default _.omit(predicates, ['_', 'transduce']);

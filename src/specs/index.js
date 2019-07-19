@@ -35,8 +35,7 @@ const { compose } = helpers;
 
 const registry = new Map();
 
-
-export default compose(
+const specs = compose(
   canSpecifyAll,
   canSpecify,
 
@@ -77,3 +76,5 @@ export default compose(
 )({
   ...helpers, registry, predicates, transduce, _, jsonpath, shortid
 });
+
+export default _.omit(specs, ['predicates']);
