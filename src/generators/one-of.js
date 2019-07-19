@@ -6,7 +6,7 @@ const canGenerate = ({ arbs }) => {
   return ({ generate });
 };
 
-export const canGenerateOneOf = ({ compose }) => {
+export const canGenerateOneOf = ({ helpers: { compose } }) => {
   const oneOf = (params) => {
     let { arbs = params } = params;
     if (Array.isArray(params)) arbs = params;

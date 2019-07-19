@@ -9,7 +9,7 @@ const canGenerate = ({ totalWeight, summedWarbs }) => {
   return ({ generate });
 };
 
-export const canGenerateFreq = ({ compose }) => {
+export const canGenerateFreq = ({ helpers: { compose } }) => {
   const freq = (params) => {
     const { arbs = params } = params || {};
     let currentWeight = 0;

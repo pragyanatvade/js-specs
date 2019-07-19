@@ -5,7 +5,7 @@ const { integer, option } = generators;
 const { randomBySeed: rand } = helpers;
 
 describe('generators', () => {
-  describe('option', () => {
+  describe('options', () => {
     describe('generate', () => {
       it('When integer arbitrary is passed, should generate number and null sometimes', () => {
         const seed = Date.now();

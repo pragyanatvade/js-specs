@@ -74,7 +74,8 @@ const specs = compose(
 
   canTransduceSpec,
 )({
-  ...helpers, registry, predicates, transduce, _, jsonpath, shortid
+  helpers, registry, predicates, transduce, _, jsonpath, shortid
 });
 
-export default _.omit(specs, ['predicates']);
+const omits = ['predicates', 'transduce', '_', 'jsonpath', 'shortid', 'helpers'];
+export default _.omit(specs, omits);

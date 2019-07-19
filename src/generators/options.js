@@ -14,7 +14,7 @@ const canGenerate = ({ arb, optionArb, shrinkable }) => {
   return ({ generate });
 };
 
-export const canGenerateOption = ({ compose, nat, shrinkable }) => {
+export const canGenerateOptions = ({ helpers: { compose, shrinkable }, nat, }) => {
   const option = (params) => {
     const { arb = params, freq = 5 } = params || {};
     const optionArb = nat(freq);
@@ -26,4 +26,4 @@ export const canGenerateOption = ({ compose, nat, shrinkable }) => {
   return ({ option });
 };
 
-export default canGenerateOption;
+export default canGenerateOptions;

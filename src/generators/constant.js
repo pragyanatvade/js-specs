@@ -11,7 +11,7 @@ const canGenerate = ({ values, shrinkable, stream }) => {
   return ({ generate });
 };
 
-export const canGenerateConstant = ({ compose, shrinkable, stream }) => {
+export const canGenerateConstant = ({ helpers: { compose, shrinkable, stream } }) => {
   const constant = (params) => {
     const { value = params } = params || {};
     const { generate } = compose(canGenerate)({ values: [value], shrinkable, stream });
@@ -21,7 +21,7 @@ export const canGenerateConstant = ({ compose, shrinkable, stream }) => {
   return ({ constant });
 };
 
-export const canGenerateConstantFrom = ({ compose, shrinkable, stream }) => {
+export const canGenerateConstantFrom = ({ helpers: { compose, shrinkable, stream } }) => {
   const constantFrom = (params) => {
     let { values = params } = params || {};
     if (Array.isArray(params)) values = params;

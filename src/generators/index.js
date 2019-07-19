@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import helpers from '../helpers';
 
 import { canGenerateInteger, canGenerateNatural } from './integer';
@@ -10,7 +11,7 @@ import { canGenerateSet } from './set';
 import { canGenerateTuple } from './tuple';
 import { canGenerateDictionary } from './dictionary';
 import { canGenerateOneOf } from './one-of';
-import { canGenerateOption } from './option';
+import { canGenerateOptions } from './options';
 import { canGenerateFloat, canGenerateDouble } from './float';
 import { canGenerateRecord } from './record';
 import { canGenerateFreq } from './freq';
@@ -60,7 +61,7 @@ const oneOfs = [
 ];
 
 const options = [
-  canGenerateOption
+  canGenerateOptions
 ];
 
 const floats = [
@@ -76,7 +77,7 @@ const freqs = [
   canGenerateFreq
 ];
 
-export default compose(
+const generators = compose(
   ...freqs,
   ...records,
   ...floats,
@@ -91,4 +92,6 @@ export default compose(
   ...booleans,
   ...arrays,
   ...numbers
-)(helpers);
+)({ helpers });
+
+export default _.omit(generators, ['helpers']);

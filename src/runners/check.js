@@ -1,6 +1,6 @@
 
 export const canCheckProp = ({
-  readConfig, shrinkable, stream, valueIterator, runIterator, randomBySeed
+  readConfig, helpers: { shrinkable, stream, randomBySeed }, valueIterator, runIterator
 }) => {
   const decorateProperty = ({ prop, params }) => {
     const dProp = prop.isAsync() && params.timeout !== null ? {} : prop;

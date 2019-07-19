@@ -1,4 +1,4 @@
-export const canGenerateDictionary = ({ tuple, set, map }) => {
+export const canGenerateDictionary = ({ tuple, set, helpers: { map } }) => {
   const iterator = (items) => {
     const obj = {};
     for (const item of items) { // eslint-disable-line

@@ -39,7 +39,7 @@ const canShrink = ({ stream }) => {
   return ({ shrink });
 };
 
-export const canGenerateTuple = ({ compose, stream, shrinkable }) => {
+export const canGenerateTuple = ({ helpers: { compose, stream, shrinkable } }) => {
   const tuple = (params) => {
     let { arbs = params } = params;
     if (Array.isArray(params)) arbs = params;

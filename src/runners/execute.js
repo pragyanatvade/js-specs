@@ -134,7 +134,7 @@ const canMergePaths = () => {
   return ({ mergePaths });
 };
 
-export const canExecute = ({ compose }) => {
+export const canExecute = ({ helpers: { compose } }) => {
   const execute = (params) => {
     const { verbose = params } = params || {};
     const rootExecutionTrees = [];

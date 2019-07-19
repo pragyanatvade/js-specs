@@ -23,7 +23,7 @@ const canNext = ({ initialValues, maxInitialIterations, remainingSkips }) => {
   return ({ skippedOne });
 };
 
-export const canValueIterator = ({ compose }) => {
+export const canValueIterator = ({ helpers: { compose } }) => {
   const valueIterator = (params) => {
     const { initialValues, maxInitialIterations, remainingSkips } = params || {};
     const {

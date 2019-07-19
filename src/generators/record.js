@@ -1,4 +1,4 @@
-export const canGenerateRecord = ({ tuple, map, option }) => {
+export const canGenerateRecord = ({ tuple, helpers: { map }, option }) => {
   const rawRecord = (schema) => {
     const keys = Object.keys(schema);
     const arbs = keys.map(key => schema[key]);

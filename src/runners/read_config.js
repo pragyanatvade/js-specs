@@ -73,7 +73,7 @@ const readExamples = (params) => {
   return ({ examples });
 };
 
-export const canReadConfig = ({ compose, xorshift128plus }) => {
+export const canReadConfig = ({ helpers: { compose, xorshift128plus } }) => {
   const readConfig = params => compose(readSeed,
     readRandomType,
     readEndOnFailure,

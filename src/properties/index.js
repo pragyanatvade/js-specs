@@ -1,11 +1,13 @@
+import _ from 'lodash';
 import helpers from '../helpers';
 
 import { canDefineSyncProp } from './sync';
 import { canDefineAsyncProp } from './async';
 
 const { compose } = helpers;
-
-export default compose(
+const properties = compose(
   canDefineSyncProp,
   canDefineAsyncProp
-)(helpers);
+)({ helpers });
+
+export default _.omit(properties, ['helpers']);

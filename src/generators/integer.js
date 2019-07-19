@@ -86,7 +86,7 @@ const canShrinkableFor = ({ shrink, shrinkable }) => {
   return ({ shrinkableFor });
 };
 
-export const canGenerateInteger = ({ compose, stream, shrinkable }) => {
+export const canGenerateInteger = ({ helpers: { compose, stream, shrinkable } }) => {
   const integer = (params) => {
     const MIN_INT = 0x80000000 | 0; // eslint-disable-line
     const MAX_INT = 0x7fffffff | 0; // eslint-disable-line

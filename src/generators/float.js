@@ -2,7 +2,7 @@ const DOUBLE_FACTOR = 2 ** 27;
 const DOUBLE_DIVISOR = 2 ** -53;
 
 
-export const canGenerateFloat = ({ map, integer }) => {
+export const canGenerateFloat = ({ helpers: { map }, integer }) => {
   const next = n => integer({ min: 0, max: (1 << n) - 1 }); // eslint-disable-line
 
   const floatArb = () => {
@@ -20,7 +20,7 @@ export const canGenerateFloat = ({ map, integer }) => {
   return ({ float });
 };
 
-export const canGenerateDouble = ({ tuple, map, integer }) => {
+export const canGenerateDouble = ({ tuple, helpers: { map }, integer }) => {
   const next = n => integer({ min: 0, max: (1 << n) - 1 }); // eslint-disable-line
 
   const doubleArb = () => {

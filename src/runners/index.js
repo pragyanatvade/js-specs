@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import helpers from '../helpers';
 
 import { canReadConfig } from './read_config';
@@ -9,10 +10,12 @@ import { canExecute } from './execute';
 
 const { compose } = helpers;
 
-export default compose(
+const runners = compose(
   canCheckProp,
   canReadConfig,
   canRunIterator,
   canValueIterator,
   canExecute
-)(helpers);
+)({ helpers });
+
+export default _.omit(runners, ['helpers']);

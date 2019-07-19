@@ -53,7 +53,7 @@ const canShrink = ({
 };
 
 export const canGenerateArray = ({
-  integer, compose, shrinkable, stream
+  integer, helpers: { compose, shrinkable, stream }
 }) => {
   const array = (params) => {
     const {

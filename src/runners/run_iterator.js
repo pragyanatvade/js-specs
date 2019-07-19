@@ -30,7 +30,7 @@ const canHandleResult = ({
   return ({ handleResult });
 };
 
-export const canRunIterator = ({ compose, execute }) => {
+export const canRunIterator = ({ helpers: { compose }, execute }) => {
   const runIterator = (params) => {
     const { sourceValues, verbose } = params || {};
     const runExecution = execute({ verbose });
