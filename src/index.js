@@ -6,6 +6,6 @@ import specs from './specs';
 import transformers from './transformers';
 import runners from './runners';
 
-export default () => ({
+module.exports = () => ({
   generators, helpers, predicates, properties, specs, transformers, runners
 });
