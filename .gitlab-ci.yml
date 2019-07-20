@@ -18,4 +18,4 @@ install_dependencies:
 
 testing_testing:
   stage: test
-  script: npm run test
+  script: npm run test --preifix packages/specs
