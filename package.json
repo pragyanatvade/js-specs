@@ -6,5 +6,6 @@
     "lerna": "^3.13.4"
   },
   "scripts": {
+    "build:watch": "lerna run build:watch --parallel"
   }
 }
