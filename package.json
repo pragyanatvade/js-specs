@@ -3,7 +3,7 @@
   "description": "Simulation testing framework for NodeJS",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.13.4"
+    "lerna": "^3.16.1"
   },
   "scripts": {
     "build:watch": "lerna run build:watch --parallel"

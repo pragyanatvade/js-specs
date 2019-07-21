@@ -10,11 +10,11 @@
   "scripts": {
     "build": "babel src/ -d dist/ --source-maps",
     "build:watch": "babel src/ -d dist/ --watch --source-maps",
-    "dev": "babel-watch src/server.js",
+    "dev": "nodemon dist/server.js",
     "debug": "ndb nodemon dist/server.js",
     "start": "pm2 start pm2.json",
-    "prepare": "npm run build",
-    "test": "jest",
+    "prepublish": "npm run build",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
   },
