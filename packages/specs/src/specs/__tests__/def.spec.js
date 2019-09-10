@@ -18,5 +18,13 @@ describe('specs', () => {
       const resp = specs.valid({ key, data: 21332 });
       expect(resp).toBeFalsy();
     });
+    it('When defining nested data, should return correct keys', () => {
+      const firstName = 'first-name';
+      const lastName = 'last-name';
+      specs.def({ key: firstName, predicate: preds.string });
+      specs.def({ key: lastName, predicate: preds.string });
+      specs.def({ key: 'name', predicate: specs.keys([firstName, lastName]) });
+      expect([firstName, lastName]).toEqual(specs.registry.get('name').keys());
+    });
   });
 });
